@@ -21,4 +21,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MagisterkaXML"
 include(":app")
- 
+include(":app:benchmark")

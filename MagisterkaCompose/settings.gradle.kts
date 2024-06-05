@@ -15,3 +15,4 @@ dependencyResolutionManagement {
 
 rootProject.name = "MagisterkaCompose"
 include(":app")
+include(":benchmark")

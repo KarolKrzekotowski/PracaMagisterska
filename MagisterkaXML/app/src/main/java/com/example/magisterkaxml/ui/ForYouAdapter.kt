@@ -1,9 +1,15 @@
 package com.example.magisterkaxml.ui
 
+import android.content.res.ColorStateList
+import android.content.res.Resources
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.RecyclerView
+import com.example.magisterkaxml.R
 import com.example.magisterkaxml.sales.ForYouItem
 import com.example.magisterkaxml.databinding.ItemForyouBinding
 import com.google.android.material.shape.CornerFamily
@@ -18,6 +24,7 @@ class ForYouAdapter : RecyclerView.Adapter<ForYouAdapter.ViewHolder>() {
     inner class ViewHolder(item: View) : RecyclerView.ViewHolder(item) {
         var image = binding.image
         var requirement = binding.requirement
+        var card_requirement = binding.cardRequirement
         var saleVariant = binding.saleVariant
         var cardVariant = binding.cardVariant
         var pricePerItemPLN = binding.pricePerItemPLN
@@ -44,6 +51,7 @@ class ForYouAdapter : RecyclerView.Adapter<ForYouAdapter.ViewHolder>() {
         holder.apply {
             image.setImageResource(forYouList[position].image)
             requirement.text = forYouList[position].requirement
+
             saleVariant.text = forYouList[position].saleVariant
             var shapeAppearanceModelTop: ShapeAppearanceModel.Builder =
                 ShapeAppearanceModel().toBuilder()
@@ -78,6 +86,11 @@ class ForYouAdapter : RecyclerView.Adapter<ForYouAdapter.ViewHolder>() {
             val limitText = "Limit ${forYouList[position].limit}"
             limit.text = limitText
         }
+
+
+
+
+
     }
 
     fun setData(forYouList: List<ForYouItem>) {

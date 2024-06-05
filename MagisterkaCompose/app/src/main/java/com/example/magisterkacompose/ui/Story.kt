@@ -23,6 +23,10 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.magisterkacompose.storyMap
 
+/**
+ * Pierwsza lista z okrągłymi elementami.
+ *
+ */
 @Composable
 fun SaleStory() {
     LazyRow(
@@ -51,7 +55,7 @@ fun Story(painter: Painter, text: String) {
     ) {
         Box(
             modifier = Modifier
-                .border(2.dp, MaterialTheme.colorScheme.primary, CircleShape)
+                .border(4.dp, MaterialTheme.colorScheme.primary, CircleShape)
         ) {
             Image(
                 painter = painter,
@@ -60,7 +64,7 @@ fun Story(painter: Painter, text: String) {
                 modifier = Modifier
                     .clip(CircleShape)
                     .size(75.dp)
-                    .border(4.dp, Color.White, CircleShape)
+
             )
         }
         Text(text = text)

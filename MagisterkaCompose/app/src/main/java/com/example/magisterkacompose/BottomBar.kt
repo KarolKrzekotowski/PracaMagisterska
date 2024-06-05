@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.Notifications
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -26,11 +27,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.magisterkacompose.ui.theme.AppTheme
 
+/**
+ *
+ * Lista z ikonkami na dole ekranu
+ *
+ */
 @Composable
 fun BottomBar(modifier: Modifier = Modifier) {
     Row(
@@ -70,6 +77,14 @@ fun BottomBar(modifier: Modifier = Modifier) {
             )
             Text(text = "Listy", style = MaterialTheme.typography.labelSmall)
         }
+        Icon(
+            imageVector = Icons.Default.Add,
+            contentDescription = "add",
+            tint = Color.Black,
+            modifier = Modifier.size(25.dp).align(Alignment.Top)
+
+
+        )
         Column(
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally

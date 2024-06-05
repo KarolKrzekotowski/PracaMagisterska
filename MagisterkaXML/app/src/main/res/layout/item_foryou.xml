@@ -5,7 +5,7 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:layout_marginLeft="8dp"
-
+    android:id="@+id/scroller"
     android:layout_marginRight="8dp"
     android:background="@color/md_theme_light_szarik">
 
@@ -69,13 +69,15 @@
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_marginStart="8dp"
-        app:cardBackgroundColor="@color/md_theme_light_primary"
+
+
         app:cardCornerRadius="20dp"
         app:layout_constraintEnd_toEndOf="@+id/card_variant"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/card_variant">
 
         <LinearLayout
+            android:background="@drawable/gradient_background"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_gravity="center"

@@ -44,13 +44,14 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.tracing.trace
 import com.example.magisterkacompose.ui.theme.AppTheme
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-class MainActivity : ComponentActivity() {
+class MainActivity : ComponentActivity()  {
     @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
     @OptIn(ExperimentalMaterial3Api::class)
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) = androidx.tracing.trace("allAPP") {
         super.onCreate(savedInstanceState)
         setContent {
             AppTheme {
@@ -85,27 +86,6 @@ class MainActivity : ComponentActivity() {
                             )
                             {
                                 BottomBar(modifier = Modifier.align(Alignment.BottomCenter))
-                                Box(
-                                    modifier = Modifier
-                                        .align(Alignment.BottomCenter)
-                                        .offset(y = (-30).dp)
-                                ) {
-                                    IconButton(
-                                        onClick = { /*TODO*/ },
-                                        modifier = Modifier
-                                            .size(50.dp)
-                                            .clip(CircleShape)
-                                            .background(MaterialTheme.colorScheme.secondary)
-                                            .align(Alignment.BottomCenter)
-                                    ) {
-                                        Icon(
-                                            imageVector = Icons.Default.Add,
-                                            contentDescription = "add",
-                                            tint = Color.Black,
-                                            modifier = Modifier.size(60.dp)
-                                        )
-                                    }
-                                }
                             }
                         }
 

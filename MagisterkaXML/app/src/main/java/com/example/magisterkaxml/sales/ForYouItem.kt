@@ -11,8 +11,4 @@ data class ForYouItem(
     val details: String,
     val expiration: String,
     val limit: String,
-) : ImplementData {
-    override fun getListItemType(): Int {
-        return ImplementData.Type.TypeA.ordinal
-    }
-}
+)

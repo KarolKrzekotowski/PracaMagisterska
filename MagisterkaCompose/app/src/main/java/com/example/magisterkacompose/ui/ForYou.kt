@@ -14,6 +14,7 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.lazy.LazyItemScope
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -23,21 +24,29 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.semantics.semantics
+import androidx.compose.ui.semantics.testTagsAsResourceId
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.example.magisterkacompose.ForYouItemObject
-import com.example.magisterkacompose.forYouItemList
 import com.example.magisterkacompose.ui.theme.md_theme_light_szarik
 import com.example.magisterkacompose.ui.theme.purple
 import com.example.magisterkacompose.ui.theme.szarik_mocny
 import com.example.magisterkacompose.ui.theme.szarik_tekst
 
+/**
+ * Lista Tylko dla Ciebie
+ *
+ */
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun ForYou() {
     Column {
@@ -46,7 +55,13 @@ fun ForYou() {
             fontWeight = FontWeight.W700,
             modifier = Modifier.padding(start = 16.dp, top = 12.dp, bottom = 22.dp)
         )
-        LazyRow() {
+        LazyRow(
+            modifier = Modifier
+                .semantics {
+                    testTagsAsResourceId = true
+                }
+                .testTag("ForYouRv")
+        ) {
             for (offer in forYouItemList)
                 item {
                     ForYouItem(offer)
@@ -57,11 +72,12 @@ fun ForYou() {
 }
 
 @Composable
-fun ForYouItem(offer: ForYouItemObject) {
+fun LazyItemScope.ForYouItem(offer: ForYouItemObject) {
     Column(
         modifier = Modifier
             .background(md_theme_light_szarik)
-            .width(250.dp)
+            .fillParentMaxHeight()
+            .fillParentMaxWidth(0.65f)
             .padding(start = 8.dp)
     ) {
         Text(
@@ -71,11 +87,8 @@ fun ForYouItem(offer: ForYouItemObject) {
             style = MaterialTheme.typography.labelLarge,
             modifier = Modifier
                 .background(
-                    color = let {
-                        if (offer.requirement == "z aplikacją Mój Sklep")
-                            MaterialTheme.colorScheme.primary
-                        else purple
-                    }, shape = RoundedCornerShape(16.dp)
+                    color =
+                    MaterialTheme.colorScheme.primary, shape = RoundedCornerShape(16.dp)
                 )
                 .padding(start = 8.dp, end = 8.dp, bottom = 4.dp, top = 4.dp)
         )
